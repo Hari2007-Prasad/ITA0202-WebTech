@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>University Event Registration Portal</title>
 
 <!-- External CSS -->
@@ -10,67 +14,226 @@
 
 <!-- Internal CSS -->
 <style>
-.hero{
-    background:linear-gradient(to right,#0066cc,#00bcd4);
-    color:white;
-    text-align:center;
-    padding:60px;
+
+.hero {
+    background: linear-gradient(to right, #0066cc, #00bcd4);
+    color: white;
+    text-align: center;
+    padding: 60px;
 }
+
+.hero h1 {
+    margin-bottom: 10px;
+}
+
+.hero p {
+    margin-bottom: 0;
+}
+
+.events {
+    padding: 40px;
+}
+
+.events h2 {
+    text-align: center;
+}
+
+.event-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 230px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.card h3 {
+    color: #0066cc;
+}
+
+.status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.card button {
+    background: #0066cc;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #004c99;
+}
+
+.form-section {
+    width: 450px;
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+.form-section h2 {
+    text-align: center;
+    color: #0066cc;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section label {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.form-section input,
+.form-section select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.form-section input[type="submit"] {
+    margin-top: 20px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.form-section input[type="submit"]:hover {
+    background: #004c99;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 </style>
 
 </head>
 
+
 <body>
 
+
+<!-- HEADER -->
+
 <header>
+
 <div class="logo">
+
 <h1>SIMATS University</h1>
+
 <h2>Event Registration Portal</h2>
+
 </div>
 
+
 <nav>
+
 <ul>
-<li><a href="#home">Home</a></li>
-<li><a href="#events">Events</a></li>
-<li><a href="#register">Register</a></li>
-<li><a href="#contact">Contact</a></li>
+
+<li>
+<a href="#home">Home</a>
+</li>
+
+<li>
+<a href="#events">Events</a>
+</li>
+
+<li>
+<a href="#register">Register</a>
+</li>
+
+<li>
+<a href="#contact">Contact</a>
+</li>
+
 </ul>
+
 </nav>
 
 </header>
+
+
+<!-- HERO SECTION -->
 
 <section class="hero" id="home">
 
 <h1>Register for University Events 2026</h1>
 
-<p>Technical Workshops | Cultural Fest | Sports | Placement Training</p>
-
-<button style="background:red;color:white;">Register Now</button>
+<p>
+Technical Workshops | Cultural Fest | Sports | Placement Training
+</p>
 
 </section>
+
+
+<!-- EVENTS SECTION -->
 
 <section class="events" id="events">
 
 <h2>Upcoming Events</h2>
 
+
 <div class="event-container">
 
+
+<!-- HACKATHON -->
+
 <div class="card">
+
 <span class="status">Open</span>
 
 <h3>Hackathon</h3>
 
-<p><b>Category:</b> Technical</p>
+<p>
+<b>Category:</b> Technical
+</p>
 
-<p><b>Date:</b> 20 Aug 2026</p>
+<p>
+<b>Date:</b> 20 Aug 2026
+</p>
 
-<p><b>Venue:</b> RB Seminar Hall</p>
+<p>
+<b>Venue:</b> RB Seminar Hall
+</p>
 
-<p>24-hour coding competition.</p>
+<p>
+24-hour coding competition.
+</p>
 
-<button>Register</button>
+<a href="#register">
+<button type="button">Register</button>
+</a>
 
 </div>
+
+
+<!-- CULTURAL FEST -->
 
 <div class="card">
 
@@ -78,17 +241,30 @@
 
 <h3>Cultural Fest</h3>
 
-<p><b>Category:</b> Cultural</p>
+<p>
+<b>Category:</b> Cultural
+</p>
 
-<p><b>Date:</b> 24 Aug 2026</p>
+<p>
+<b>Date:</b> 24 Aug 2026
+</p>
 
-<p><b>Venue:</b> SIMATS Auditorium</p>
+<p>
+<b>Venue:</b> SIMATS Auditorium
+</p>
 
-<p>Dance, music and drama competitions.</p>
+<p>
+Dance, music and drama competitions.
+</p>
 
-<button>Register</button>
+<a href="#register">
+<button type="button">Register</button>
+</a>
 
 </div>
+
+
+<!-- PLACEMENT TRAINING -->
 
 <div class="card">
 
@@ -96,17 +272,30 @@
 
 <h3>Placement Training</h3>
 
-<p><b>Category:</b> Placement</p>
+<p>
+<b>Category:</b> Placement
+</p>
 
-<p><b>Date:</b> 30 Aug 2026</p>
+<p>
+<b>Date:</b> 30 Aug 2026
+</p>
 
-<p><b>Venue:</b> Lab 4</p>
+<p>
+<b>Venue:</b> Lab 4
+</p>
 
-<p>Aptitude and interview preparation.</p>
+<p>
+Aptitude and interview preparation.
+</p>
 
-<button>Register</button>
+<a href="#register">
+<button type="button">Register</button>
+</a>
 
 </div>
+
+
+<!-- SPORTS MEET -->
 
 <div class="card">
 
@@ -114,43 +303,85 @@
 
 <h3>Sports Meet</h3>
 
-<p><b>Category:</b> Sports</p>
+<p>
+<b>Category:</b> Sports
+</p>
 
-<p><b>Date:</b> 5 Sept 2026</p>
+<p>
+<b>Date:</b> 5 Sept 2026
+</p>
 
-<p><b>Venue:</b> SIMATS Ground</p>
+<p>
+<b>Venue:</b> SIMATS Ground
+</p>
 
-<p>Indoor and outdoor sports events.</p>
+<p>
+Indoor and outdoor sports events.
+</p>
 
-<button>Register</button>
+<a href="#register">
+<button type="button">Register</button>
+</a>
 
 </div>
+
 
 </div>
 
 </section>
 
+
+<!-- REGISTRATION FORM -->
+
 <section class="form-section" id="register">
 
 <h2>Registration Form</h2>
 
+
 <form>
 
+
 <label>Name</label>
-<input type="text" required>
+
+<input
+type="text"
+placeholder="Enter your name"
+required
+>
+
 
 <label>Register Number</label>
-<input type="text" required>
+
+<input
+type="text"
+placeholder="Enter register number"
+required
+>
+
 
 <label>Department</label>
-<input type="text">
+
+<input
+type="text"
+placeholder="Enter department"
+required
+>
+
 
 <label>Email</label>
-<input type="email" required>
+
+<input
+type="email"
+placeholder="Enter email"
+required
+>
+
 
 <label>Select Event</label>
 
-<select>
+<select required>
+
+<option value="">-- Select Event --</option>
 
 <option>Hackathon</option>
 
@@ -162,25 +393,48 @@
 
 </select>
 
-<input type="submit" value="Submit">
+
+<input
+type="submit"
+value="Submit"
+>
+
 
 </form>
 
 </section>
 
+
+<!-- FOOTER -->
+
 <footer id="contact">
 
-<p>Email : events@simatsuniversity.edu</p>
+<p>
+Email : events@simatsuniversity.edu
+</p>
 
-<p>Phone : +91 7397353895</p>
+<p>
+Phone : +91 7397353895
+</p>
 
-<p>© 2026 SIMATS University</p>
+<p>
+© 2026 SIMATS University
+</p>
 
-<a href="#">Privacy Policy</a>
+<a href="#">
+Privacy Policy
+</a>
 
 </footer>
 
-<div class="help">Help</div>
+
+<!-- HELP BUTTON -->
+
+<div class="help">
+Help
+</div>
+
 
 </body>
+
 </html>
