@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XPath Course Analysis</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .question {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .xpath {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .output {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>XPath Course Analysis</h2>
+
+<div class="question">
+    <h3>a. All Course Records</h3>
+    <p class="xpath">/courses/course</p>
+    <div id="a" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>b. Names of All Courses</h3>
+    <p class="xpath">/courses/course/name</p>
+    <div id="b" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>c. Courses Having More Than 50 Students</h3>
+    <p class="xpath">/courses/course[students &gt; 50]</p>
+    <div id="c" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>d. Courses Carrying 4 Credits</h3>
+    <p class="xpath">/courses/course[credits = 4]</p>
+    <div id="d" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>e. Courses Whose Type is Theory</h3>
+    <p class="xpath">/courses/course[type = 'Theory']</p>
+    <div id="e" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>f. Theory Courses Having More Than 50 Students</h3>
+    <p class="xpath">/courses/course[type = 'Theory' and students &gt; 50]/name</p>
+    <div id="f" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>g. Faculty Members Handling Courses with At Least 4 Credits</h3>
+    <p class="xpath">/courses/course[credits &gt;= 4]/faculty</p>
+    <div id="g" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>h. Course Whose ID is C104</h3>
+    <p class="xpath">/courses/course[@id = 'C104']</p>
+    <div id="h" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>i. First Course</h3>
+    <p class="xpath">/courses/course[1]</p>
+    <div id="i" class="output"></div>
+</div>
+
+<div class="question">
+    <h3>j. Last Course</h3>
+    <p class="xpath">/courses/course[last()]</p>
+    <div id="j" class="output"></div>
+</div>
+
+<script>
+
+const xml = `
+<courses>
+
+<course id="C101">
+<code>WEB301</code>
+<name>Web Technology</name>
+<faculty>Dr. Arun</faculty>
+<students>58</students>
+<credits>4</credits>
+<type>Theory</type>
+</course>
+
+<course id="C102">
+<code>AI302</code>
+<name>Artificial Intelligence</name>
+<faculty>Dr. Meena</faculty>
+<students>72</students>
+<credits>4</credits>
+<type>Theory</type>
+</course>
+
+<course id="C103">
+<code>WEB303</code>
+<name>Web Technology Laboratory</name>
+<faculty>Dr. Ravi</faculty>
+<students>36</students>
+<credits>2</credits>
+<type>Practical</type>
+</course>
+
+<course id="C104">
+<code>ML304</code>
+<name>Machine Learning</name>
+<faculty>Dr. Priya</faculty>
+<students>64</students>
+<credits>4</credits>
+<type>Theory</type>
+</course>
+
+<course id="C105">
+<code>DB305</code>
+<name>Database Systems</name>
+<faculty>Dr. Kumar</faculty>
+<students>42</students>
+<credits>3</credits>
+<type>Theory</type>
+</course>
+
+</courses>
+`;
+
+const parser = new DOMParser();
+const xmlDoc = parser.parseFromString(xml, "text/xml");
+
+function getResult(expression) {
+
+    const result = document.evaluate(
+        expression,
+        xmlDoc,
+        null,
+        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+        null
+    );
+
+    let output = "";
+
+    for (let i = 0; i < result.snapshotLength; i++) {
+
+        let node = result.snapshotItem(i);
+
+        if (node.tagName === "course") {
+
+            output += "<b>ID:</b> " + node.getAttribute("id") + "<br>";
+            output += "<b>Code:</b> " + node.getElementsByTagName("code")[0].textContent + "<br>";
+            output += "<b>Name:</b> " + node.getElementsByTagName("name")[0].textContent + "<br>";
+            output += "<b>Faculty:</b> " + node.getElementsByTagName("faculty")[0].textContent + "<br>";
+            output += "<b>Students:</b> " + node.getElementsByTagName("students")[0].textContent + "<br>";
+            output += "<b>Credits:</b> " + node.getElementsByTagName("credits")[0].textContent + "<br>";
+            output += "<b>Type:</b> " + node.getElementsByTagName("type")[0].textContent + "<br><hr>";
+
+        } else {
+
+            output += node.textContent + "<br>";
+
+        }
+    }
+
+    return output;
+}
+
+document.getElementById("a").innerHTML =
+    getResult("/courses/course");
+
+document.getElementById("b").innerHTML =
+    getResult("/courses/course/name");
+
+document.getElementById("c").innerHTML =
+    getResult("/courses/course[students > 50]");
+
+document.getElementById("d").innerHTML =
+    getResult("/courses/course[credits = 4]");
+
+document.getElementById("e").innerHTML =
+    getResult("/courses/course[type = 'Theory']");
+
+document.getElementById("f").innerHTML =
+    getResult("/courses/course[type = 'Theory' and students > 50]/name");
+
+document.getElementById("g").innerHTML =
+    getResult("/courses/course[credits >= 4]/faculty");
+
+document.getElementById("h").innerHTML =
+    getResult("/courses/course[@id = 'C104']");
+
+document.getElementById("i").innerHTML =
+    getResult("/courses/course[1]");
+
+document.getElementById("j").innerHTML =
+    getResult("/courses/course[last()]");
+
+</script>
+
+</body>
+</html>
